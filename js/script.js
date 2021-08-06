@@ -33,6 +33,28 @@
       source: "L. Frank Baum",
       citation: "The Lost Princess Of Oz",
       year: "1917"
+    },
+    {
+      quote: "The menu is not the meal.",
+      source: "Alan Watts"
+    },
+    {
+      quote: "Intelligence plus character - that is the goal of true education.",
+      source: "Martin Luther King Jr.",
+      citation: "The Maroon Tiger",
+      year: "1947"
+    },
+    {
+      quote: "Hide not your Talents, they for Use were made. What’s a Sun-Dial in the shade!",
+      source: "Benjamin Franklin",
+      citation: "Poor Richard's Almanack",
+      year: "1750"
+    },
+    {
+      quote: "The gifted man bears his gifts into the world, not for his own benefit, but for the people among whom he is placed; for the gifts are not his, he himself is a gift to the community.",
+      source: "Henry Ford",
+      citation: "Ford News, p. 2",
+      year: "1922"
     }
     ]; 
 /**
@@ -52,18 +74,25 @@ function getRandomQuote() {
 
 function printQuote() {
 
-
+/***
+ * Created variables of color.
+ * They will be used to generate random colors.
+ */
   var red = randomRGB();
   var green = randomRGB();
   var blue = randomRGB();
   let rgbColor = 'rgb(' + red + ',' + green + ',' + blue + ')';
 
 
-
+/***
+ * Created a getRandomQuote using "outcome" as my properties "manager", that contains the objects in my quote array.
+ */
   let outcome = getRandomQuote('messages');
   var messages = "<p class=quote>" + outcome.quote + "</p>";
     messages += "<p class='source'>" + outcome.source;
-      
+      /***
+       * Had to add "citation", "year", "tags" if some of the quotes used these objects, using the "if" statements
+       */
       if ("citation" in outcome) {
         messages += "<span class='citation'>" + outcome.citation + "</span>";
       }
@@ -75,7 +104,9 @@ function printQuote() {
       if ("tags" in outcome){
         messages += "<span class='tags'>" + outcome.tags + "</span>" + "</p>";
       }
-
+/**
+ * Added to put my random colors into the body of the html.
+ */
   document.body.style.backgroundColor = rgbColor;
   document.getElementById('quote-box').innerHTML = messages;
     
